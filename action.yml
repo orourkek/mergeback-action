@@ -1,11 +1,21 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Mergeback'
+description: 'GitHub action to create a PR to merge back changes from one branch to another, e.g. for gitflow workflows'
+author: "Kevin O'Rourke <orourke.kevin@gmail.com>"
 inputs:
-  milliseconds: # change this
+  GITHUB_TOKEN:
+    description: "User token used to create the pull request"
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  FROM_BRANCH:
+    description: "Source branch for the pull request"
+    required: true
+  TO_BRANCH:
+    description: "Target branch for the pull request"
+    required: true
+outputs:
+  PULL_REQUEST_URL:
+    description: "URL of the generated pull request"
+  PULL_REQUEST_NUMBER:
+    description: "Number of the generated pull request"
 runs:
   using: 'node16'
   main: 'dist/index.js'
